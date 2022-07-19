@@ -1,0 +1,23 @@
+.searchContainer {
+    margin-bottom: 1.5rem;
+}
+
+.searchContainer input {
+    font-family: 'Lato', sans-serif;
+    background-color: #ededed;
+    border: none;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 2.3rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+}
+
+.searchContainer input::placeholder {
+    font-family: 'Lato', sans-serif;
+    color: #4d4c4c;
+}
+
+.searchContainer input:focus {
+    outline: 3px solid #FFA500;
+}
