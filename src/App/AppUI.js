@@ -5,27 +5,36 @@ import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
 
-function AppUI(props) {
+function AppUI({
+  // estas son props que estamos recibiendo desde el idex.
+  totalTodos,
+  completedTodos,
+  searchValue,
+  setSearchValue,
+  searchedTodos,
+  toggleCompleTodo,
+  deleteTodo
+}) {
 
   return(
     <React.Fragment>
       <TodoCounter
-        total={props.totalTodos}
-        completed={props.completedTodos}
+        total={totalTodos}
+        completed={completedTodos}
       />
       <TodoSearch 
-        searchValue={props.searchValue} 
-        setSearchValue={props.setSearchValue}
+        searchValue={searchValue} 
+        setSearchValue={setSearchValue}
       />
       
       <TodoList>
-        {props.searchedTodos.map(todo => (
+        {searchedTodos.map(todo => (
           <TodoItem 
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
-            onComplete={() => props.toggleCompleTodo(todo.text)}
-            onDelete={() => props.deleteTodo(todo.text)}
+            onComplete={() => toggleCompleTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
           />
         ))}
       </TodoList>   
