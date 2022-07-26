@@ -6,8 +6,9 @@ import { TodoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
 
 function AppUI({
-  // estas son props que estamos recibiendo desde el idex.
-  totalTodos,
+  loading,// variables para useEffect
+  error,
+  totalTodos,// estas son props que estamos recibiendo desde el idex.
   completedTodos,
   searchValue,
   setSearchValue,
@@ -28,6 +29,9 @@ function AppUI({
       />
       
       <TodoList>
+        {loading && <p>Estamos cargando!!!</p>}
+        {error && <p>Te fallamos!!!</p>}
+        {(!loading && !searchedTodos.length) && <p>Crea tu primer Todo!!!</p>}
         {searchedTodos.map(todo => (
           <TodoItem 
             key={todo.text}
