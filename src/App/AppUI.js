@@ -1,39 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
+import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm";
 
-function AppUI({
-  loading,// variables para useEffect
-  error,
-  totalTodos,// estas son props que estamos recibiendo desde el idex.
-  completedTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  toggleCompleTodo,
-  deleteTodo
-}) {
+function AppUI() {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    toggleCompleTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal } = useContext(TodoContext);
 
-  return(
+  return (
     <React.Fragment>
-      <TodoCounter
-        total={totalTodos}
-        completed={completedTodos}
-      />
-      <TodoSearch 
-        searchValue={searchValue} 
-        setSearchValue={setSearchValue}
-      />
-      
+      <TodoCounter />
+      <TodoSearch />
+
       <TodoList>
         {loading && <p>Estamos cargando!!!</p>}
         {error && <p>Te fallamos!!!</p>}
         {(!loading && !searchedTodos.length) && <p>Crea tu primer Todo!!!</p>}
         {searchedTodos.map(todo => (
-          <TodoItem 
+          <TodoItem
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
@@ -41,9 +36,16 @@ function AppUI({
             onDelete={() => deleteTodo(todo.text)}
           />
         ))}
-      </TodoList>   
+      </TodoList>
+      {openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
 
-      <CreateTodoButton />
+      <CreateTodoButton
+        setOpenModal={setOpenModal}
+      />
     </React.Fragment>
   );
 }

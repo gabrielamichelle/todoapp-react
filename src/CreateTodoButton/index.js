@@ -1,20 +1,20 @@
 import React from "react";
-import './CreateTodoButton.css' ;
+import './CreateTodoButton.css';
 
-function CreateTodoButton(props){
+function CreateTodoButton(props) {
 
-    const onClickButton = (msg) => {
-        alert(msg);
-    };
+  const onClickButton = () => {
+    props.setOpenModal(prevState => !prevState);
+  };
 
-    return(
-        <button 
-        className="btnCreate" 
-        onClick={() => onClickButton('Este es el parametro de mensaje que esta esperando la funcion')}
-        >
-            +
-        </button>
-    );
+  return (
+    <button
+      className="btnCreate"
+      onClick={onClickButton}
+    >
+      +
+    </button>
+  );
 }
 
 export { CreateTodoButton };
