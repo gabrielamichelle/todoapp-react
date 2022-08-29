@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppUI } from "./AppUI";
 import { ToDoProvider } from "../TodoContext";
 
@@ -8,9 +8,6 @@ import { ToDoProvider } from "../TodoContext";
   { text: 'Llorar con la llorona', completed: true },
   { text: 'Un texto es una composición de signos', completed: false }
 ]; */
-
-// custom react hook
-// Recibimos nuestro dos parametros el nombre y el estado inicial del item
 
 
 function App() {
