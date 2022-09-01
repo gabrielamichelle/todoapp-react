@@ -2,16 +2,14 @@ import React from "react";
 import './TodoItem.css' ;
 import { CompleteIcon } from "../TodoIcon/CompleteIcon";
 import { DeleteIcon } from "../TodoIcon/DeleteIcon";
-import { FaCheck } from "react-icons/fa";
-import { FaTrash } from "react-icons/fa";
-function TodoItem(props){
 
+function TodoItem(props){
     return(
         <li>
             <div className="infoTaskContainer">
-                <span className="checkTask" onClick={props.onComplete}>
+                {/* <span className="checkTask" onClick={props.onComplete}>
                     <i className={`iconCheck ${props.completed && 'checked'}`}>✔</i>
-                </span>
+                </span> */}
                 <CompleteIcon completed={props.completed} onComplete={props.onComplete}/>
                 <p className={`textTask ${props.completed && 'complete'}`}>{props.text}</p>
             </div>
